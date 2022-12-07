@@ -1,0 +1,30 @@
+<p>除常用方法（如 getXxx/isXxx）等外，不要在条件判断中执行其它复杂的语句，将复杂逻辑判断的结果赋值给一个有意义的布尔变量名，以提高可读性.</p>
+
+<h2>说明</h2>
+<pre>
+  说明：很多 if 语句内的逻辑表达式相当复杂，与、或、取反混合运算，甚至各种方法纵深调用，理解成本非常高。如果赋值一个非常好理解的布尔变量名字，则是件令人爽心悦目的事情。
+</pre>
+<h2>不合规代码示例</h2>
+<pre>
+class MyClass {
+  public void BadMethod(long arg) {
+    if (!tryAcquire(arg) &&
+    acquireQueued(addWaiter(Node.EXCLUSIVE), arg)) {
+    selfInterrupt();
+    }
+  }
+}
+</pre>
+
+<h2>合规解决方案</h2>
+<pre>
+class MyClass {
+  public void GoodMethod() {
+    final boolean existed = (file.open(fileName, "w") != null) && (...) || (...);
+    if (existed) {
+    ...
+    }
+  }
+}
+</pre>
+

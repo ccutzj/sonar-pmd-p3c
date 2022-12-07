@@ -1,0 +1,18 @@
+<p>POJO类中的任何布尔类型的变量，都不要加is，否则部分框架解析会引起序列化错误.</p>
+
+<h2>定义为基本数据类型 Boolean isDeleted 的属性，它的方法也是 isDeleted()，RPC 框架在反向解析的时候，“误以为” 对应的属性名称是 deleted，导致属性获取不到，进而抛出异常。</h2>
+
+<h2>不合规代码示例</h2>
+<pre>
+class MyClass {
+  Boolean isDeleted;
+}
+</pre>
+
+<h2>合规解决方案</h2>
+<pre>
+class MyClass {
+  Boolean success;
+  Boolean delete;
+}
+</pre>

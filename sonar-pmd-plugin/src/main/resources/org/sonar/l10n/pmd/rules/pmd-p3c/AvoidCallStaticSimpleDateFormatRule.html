@@ -1,0 +1,31 @@
+<p>SimpleDateFormat 是线程不安全的类，一般不要定义为static变量，如果定义为static，必须加锁，或者使用DateUtils工具类.</p>
+
+<h2>说明</h2>
+<pre>
+  如果是JDK8的应用，可以使用instant代替Date，LocalDateTime代替Calendar，DateTimeFormatter代替SimpleDateFormat。
+  官方给出的解释：simple beautiful strong immutable thread-safe
+</pre>
+
+<h2>合规解决方案</h2>
+<pre>
+class MyClass {
+  private static final String FORMAT = "yyyy-MM-dd HH:mm:ss";
+    public String getFormat(Date date){
+        SimpleDateFormat dateFormat = new SimpleDateFormat(FORMAT);
+        return sdf.format(date);
+    }
+
+  or
+
+  private static final SimpleDateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    public void getFormat(){
+        synchronized (sdf){
+        sdf.format(new Date());
+        ….;
+    }
+
+}
+</pre>
+
+
+

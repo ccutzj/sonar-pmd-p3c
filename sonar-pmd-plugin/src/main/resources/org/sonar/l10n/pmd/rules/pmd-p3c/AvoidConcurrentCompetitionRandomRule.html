@@ -1,0 +1,16 @@
+<p>避免Random实例被多线程使用，虽然共享该实例是线程安全的，但会因竞争同一seed 导致的性能下降.</p>
+
+<h2>合规解决方案</h2>
+<pre>
+  //在 JDK7 之后，可以直接使用 API ThreadLocalRandom，而在 JDK7 之前，需要编码保证每个线程持有一个单独的 Random 实例
+  public class RandomInThread extends Thread {
+      private Random random = ThreadLocalRandom.current();
+      @Override
+      public void run() {
+          long t = random.nextLong();
+      }
+  }
+</pre>
+
+
+

@@ -1,0 +1,20 @@
+<p>不能在finally块中使用return，finally块中的return返回后方法结束执行，不会再执行try块中的return语句.</p>
+
+<h2>不合规代码示例</h2>
+<pre>
+class MyClass {
+  private int x = 0;
+  public int checkReturn() {
+    try {
+      // x 等于 1，此处不返回
+      return ++x;
+    } finally {
+      // 返回的结果是 2
+      return ++x;
+    }
+  }
+}
+</pre>
+
+
+

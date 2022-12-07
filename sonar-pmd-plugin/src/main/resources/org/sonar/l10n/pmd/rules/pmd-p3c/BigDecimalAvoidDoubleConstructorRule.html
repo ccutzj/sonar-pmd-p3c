@@ -1,0 +1,14 @@
+<p>浮点数之间的等值判断，基本数据类型不能用==来比较，包装数据类型不能用equals来判断.</p>
+
+<h2>BigDecimal(double)存在精度损失风险，在精确计算或值比较的场景中可能会导致业务逻辑异常。如：BigDecimal g = new BigDecimal(0.1f); 实际的存储值为：0.10000000149</h2>
+<h2>不合规代码示例</h2>
+<pre>
+BigDecimal recommend1 = new BigDecimal(0.1f);
+</pre>
+
+<h2>合规解决方案</h2>
+<pre>
+优先推荐入参为 String 的构造方法，或使用 BigDecimal 的 valueOf 方法，此方法内部其实执行了Double 的 toString，而 Double 的 toString 按 double 的实际能表达的精度对尾数进行了截断。
+  BigDecimal recommend1 = new BigDecimal("0.1");
+</pre>
+

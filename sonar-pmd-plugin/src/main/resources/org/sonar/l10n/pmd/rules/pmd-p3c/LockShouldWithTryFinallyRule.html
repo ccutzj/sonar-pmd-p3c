@@ -1,0 +1,34 @@
+<p>在使用阻塞等待获取锁的方式中，必须在try代码块之外，并且在加锁方法与try代码块之间没有任何可能抛出异常的方法调用，避免加锁成功后，在finally中无法解锁.</p>
+
+<h2>不合规方案</h2>
+<pre>
+  public class MyClass {
+    Lock lock = new XxxLock();
+    // ...
+    try {
+      // 如果此处抛出异常，则直接执行 finally 代码块
+      doSomething();
+      // 无论加锁是否成功，finally 代码块都会执行
+      lock.lock(); doOthers();
+    } finally {
+      lock.unlock();
+    }
+  }
+</pre>
+
+<h2>合规解决方案</h2>
+<pre>
+  public class MyClass {
+    Lock lock = new XxxLock();
+    // ...
+    lock.lock();
+    try {
+      doSomething();
+      doOthers();
+    } finally {
+      lock.unlock();
+    }
+  }
+</pre>
+
+

@@ -1,0 +1,22 @@
+<p>在if/else/for/while/do语句中必须使用大括号，即使只有一行代码.</p>
+
+<h2>不合规代码示例</h2>
+<pre>
+class MyClass {
+  public void BadMethod() {
+    if(condition) statements;
+  }
+}
+</pre>
+
+<h2>合规解决方案</h2>
+<pre>
+class MyClass {
+  public void GoodMethod() {
+    if (flag) {
+      System.out.println("hello world");
+    }
+  }
+}
+</pre>
+

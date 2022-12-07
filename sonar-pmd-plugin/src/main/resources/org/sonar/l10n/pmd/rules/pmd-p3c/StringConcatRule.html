@@ -1,0 +1,24 @@
+<p>循环体内，字符串的连接方式，使用 StringBuilder 的 append 方法进行扩展.</p>
+
+<h2>不合规代码示例</h2>
+<pre>
+class MyClass {
+  String str = "start";
+  for (int i = 0; i < 100; i++) {
+    str = str + "hello";
+  }
+}
+</pre>
+
+<h2>合规解决方案</h2>
+<pre>
+class MyClass {
+  StringBuilder strBuilder = new StringBuilder();
+  strBuilder.append("start");
+  for (int i = 0; i < 100; i++) {
+    strBuilder.append("hello");
+  }
+  strBuilder.toString();
+}
+</pre>
+

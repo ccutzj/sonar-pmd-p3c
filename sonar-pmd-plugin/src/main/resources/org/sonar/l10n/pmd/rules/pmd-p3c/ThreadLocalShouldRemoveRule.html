@@ -1,0 +1,16 @@
+<p>必须回收自定义的ThreadLocal变量，尤其在线程池场景下，线程经常会被复用，如果不清理自定义的 ThreadLocal变量，可能会影响后续业务逻辑和造成内存泄露等问题。尽量在代理中使用try-finally块进行回收.</p>
+
+<h2>合规解决方案</h2>
+<pre>
+class MyClass {
+ objectThreadLocal.set(userInfo);
+  try {
+  // ...
+  } finally {
+    objectThreadLocal.remove();
+  }
+}
+</pre>
+
+
+

@@ -1,0 +1,22 @@
+<p>定义DO/DTO/VO等POJO类时，不要加任何属性默认值.</p>
+
+<h2>不合规代码示例</h2>
+<pre>
+class MyClass{
+  private Long id;
+  private String unitAccnum;
+  private String dwzhzt = OPTION_CODE_STATUSTYPE_NORMAL; // Noncompliant
+  private String jzny;
+}
+</pre>
+
+<h2>合规解决方案</h2>
+<pre>
+class MyClass{
+  private Long id;
+  private String unitAccnum;
+  private String dwzhzt;
+  private String jzny;
+}
+</pre>
+

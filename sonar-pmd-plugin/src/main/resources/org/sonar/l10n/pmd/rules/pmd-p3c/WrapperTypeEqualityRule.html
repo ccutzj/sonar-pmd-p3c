@@ -1,0 +1,16 @@
+<p>所有的包装类对象之间值的比较，全部使用equals方法比较.</p>
+
+<h2>不合规代码示例</h2>
+<pre>
+public boolean equals(Integer src, Integer dest) {
+return src == dest;
+}
+</pre>
+
+<h2>合规解决方案</h2>
+<pre>
+public boolean equals(Integer src, Integer dest) {
+return src != null && src.equals(dest);
+}
+</pre>
+

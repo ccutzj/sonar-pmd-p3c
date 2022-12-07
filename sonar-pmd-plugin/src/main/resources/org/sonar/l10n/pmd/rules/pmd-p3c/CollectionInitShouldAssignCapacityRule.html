@@ -1,0 +1,13 @@
+<p>集合初始化时，指定集合初始值大小.</p>
+
+<h2>不合规代码示例</h2>
+<pre>
+  HashMap 需要放置 1024 个元素，由于没有设置容量初始大小，随着元素不断增加，容量 7 次被迫扩大，resize 需要重建 hash 表，严重影响性能。
+</pre>
+
+<h2>合规解决方案</h2>
+<pre>
+  HashMap 使用 HashMap(int initialCapacity) 初始化。
+  initialCapacity = (需要存储的元素个数 / 负载因子) + 1。 注意负载因子（即 loader factor）默认
+  为 0.75，如果暂时无法确定初始值大小，请设置为 16（即默认值）。
+</pre>

@@ -1,0 +1,24 @@
+<p>取反逻辑不利于快速理解，并且取反逻辑写法必然存在对应的正向逻辑写法.</p>
+
+<h2>不合规代码示例</h2>
+<pre>
+class MyClass {
+  public void BadMethod() {
+    if (!(x >= 628)) {
+    ...
+    }
+  }
+}
+</pre>
+
+<h2>合规解决方案</h2>
+<pre>
+class MyClass {
+  public void GoodMethod() {
+    if (x < 628) {
+    ...
+    }
+  }
+}
+</pre>
+

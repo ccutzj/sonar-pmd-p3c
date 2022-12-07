@@ -1,0 +1,14 @@
+<p>对于垃圾代码或过时配置，坚决清理干净，避免程序过度臃肿，代码冗余.</p>
+
+<p>谨慎注释掉代码。在上方详细说明，而不是简单地注释掉。 如果无用，则删除。对于暂时被注释掉，后续可能恢复使用的代码片断，在注释代码上方，统一规定使用三个斜杠(///)来说明注释掉代码的理由</p>
+<h2>示例</h2>
+<pre>
+ public static void hello() {
+    /// Business is stopped temporarily by the owner.
+    // Business business = new Business();
+    // business.active();
+    System.out.println("it's finished");
+ }
+</pre>
+
+

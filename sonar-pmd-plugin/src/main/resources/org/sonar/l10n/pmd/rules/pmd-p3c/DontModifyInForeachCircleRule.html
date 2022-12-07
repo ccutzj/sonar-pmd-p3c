@@ -1,0 +1,29 @@
+<p>不要在 foreach 循环里进行元素的 remove/add 操作。 remove 元素请使用Iterator 方式，如果并发操作，需要对 Iterator 对象加锁.</p>
+
+<h2>不合规代码示例</h2>
+<pre>
+class MyClass {
+  for (String item : list) {
+    if ("1".equals(item)) {
+    list.remove(item);
+    }
+  }
+}
+  // 以上代码的执行结果肯定会出乎大家的意料，那么试一下把“1” 换成“2” ，会是同样的结果吗？
+</pre>
+
+<h2>合规解决方案</h2>
+<pre>
+class MyClass {
+  List&lt;String&gt; list = new ArrayList<>();
+  list.add("1");
+  list.add("2");
+  Iterator&lt;String&gt; iterator = list.iterator();
+  while (iterator.hasNext()) {
+    String item = iterator.next();
+    if (删除元素的条件) {
+    iterator.remove();
+    }
+  }
+}
+</pre>

@@ -1,0 +1,26 @@
+<p>在subList场景中，高度注意对原列表的修改，会导致子列表的遍历、增加、删除均产生ConcurrentModificationException异常.</p>
+
+<h2>不合规代码示例</h2>
+<pre>
+class MyClass {
+  for (int i = 0; i < result.size() / 10 ; i++) {
+  List&lt;String&gt; fragment = result.subList(i * 10, (i+1) * 10);
+  for (int j = 0; j < fragment.size(); j++) {
+      // 处理数据...
+      dealData(fragment.get(j));
+      if(fitCondition()){
+         // 符合条件的情况 添加元素 会产生ConcurrentModificationException
+              result.add("guan");
+          }
+      }
+  }
+}
+</pre>
+
+<h2>合规解决方案</h2>
+<pre>
+class MyClass {
+
+}
+</pre>
+

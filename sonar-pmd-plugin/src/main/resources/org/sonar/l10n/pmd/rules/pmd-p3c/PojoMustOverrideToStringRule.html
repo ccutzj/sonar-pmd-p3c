@@ -1,0 +1,26 @@
+<p>POJO类必须写toString方法。使用工具类source> generate toString时，如果继承了另一个POJO类，注意在前面加一下super.toString.</p>
+
+<h2>不合规代码示例</h2>
+<pre>
+public class PageConditionDTO {
+  private String pageSize;
+  private String page;
+
+}
+</pre>
+
+<h2>合规解决方案</h2>
+<pre>
+public class PageConditionDTO {
+  private String pageSize;
+  private String page;
+  @Override
+  public String toString() {
+      return "PageConditionDTO{"
+            + "pageSize=" + pageSize
+            + "page=" + page
+            + '}';
+  }
+}
+</pre>
+

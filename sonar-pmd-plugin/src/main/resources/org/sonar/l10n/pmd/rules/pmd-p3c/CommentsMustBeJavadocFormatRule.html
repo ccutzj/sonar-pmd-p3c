@@ -1,0 +1,28 @@
+<p>在IDE编辑窗口中，javadoc方式会提示相关注释，生成javadoc可以正确输出相应注释；在IDE中，工程调用方法时，不进入方法即可悬浮提示方法、参数、返回值的意义，提高阅读效率.</p>
+
+<h2>不合规代码示例</h2>
+<pre>
+  // 这是一个类
+class MyClass {
+  // 这是一个方法
+  public void BadMethod() {
+    ...
+  }
+}
+</pre>
+
+<h2>合规解决方案</h2>
+<pre>
+  /**
+  * 这是一个...类
+  */
+class MyClass {
+  /**
+  * 这是一个做...的方法
+  */
+  public void GoodMethod() {
+    ...
+  }
+}
+</pre>
+

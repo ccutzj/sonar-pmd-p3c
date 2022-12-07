@@ -1,0 +1,16 @@
+<p>Object的equals方法容易抛空指针异常，应使用常量或确定有值的对象来调用equals.</p>
+
+<h2>不合规代码示例</h2>
+<pre>
+class MyClass {
+  object.equals("test");
+}
+</pre>
+
+<h2>合规解决方案</h2>
+<pre>
+class MyClass {
+  "test".equals(object);
+}
+</pre>
+

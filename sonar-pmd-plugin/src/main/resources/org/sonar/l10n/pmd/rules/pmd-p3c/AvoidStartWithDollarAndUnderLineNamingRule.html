@@ -1,0 +1,19 @@
+<p>代码中的命名均不能以下划线或美元符号开始，也不能以下划线或美元符号结束.</p>
+
+<h2>不合规代码示例</h2>
+<pre>
+class MyClass {
+  String _name; // Noncompliant
+  String name_; // Noncompliant
+  String $name; // Noncompliant
+  String name$; // Noncompliant
+  ......
+}
+</pre>
+
+<h2>合规解决方案</h2>
+<pre>
+class MyClass {
+  String name; // Compliant
+}
+</pre>
